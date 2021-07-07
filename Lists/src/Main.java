@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -44,29 +45,39 @@ public class Main {
         groceryList.addItem(scanner.nextLine());
     }
     private static void modifyItem() {
-        System.out.println("Enter the item no:");
-        int itemNo = scanner.nextInt();
-        scanner.nextLine();
+        System.out.println("Enter the current item name:");
+        String currentItem = scanner.nextLine();
         System.out.println("Enter the replacement item");
         String newItem = scanner.nextLine();
-        groceryList.modifyItem(itemNo-1, newItem);
+        groceryList.modifyItem(currentItem, newItem);
     }
 
     private static void removeItem() {
-        System.out.println("Enter the item no:");
-        int itemNo = scanner.nextInt();
-        scanner.nextLine();
-        groceryList.removeItem(itemNo-1);
+        System.out.println("Enter the item name:");
+        String itemName = scanner.nextLine();
+        groceryList.removeItem(itemName);
     }
 
     private static void searchForItem() {
         System.out.println("Enter the item:");
         String searchItem = scanner.nextLine();
-        if(groceryList.findItem(searchItem) !=null){
+        if(groceryList.searchItem(searchItem)){
             System.out.println("Found " + searchItem + " in the list");
         }else {
             System.out.println(searchItem + " not found");
         }
+    }
+
+    private static void processArrayList(){
+        ArrayList<String> newArray = new ArrayList<>();
+        //quick way to copy array into arraylist
+        newArray.addAll(groceryList.getGroceryList());
+        //another way, creating and initializing
+        ArrayList<String> nextArray = new ArrayList<>(groceryList.getGroceryList());
+
+        String[] myArr = new String[groceryList.getGroceryList().size()];
+        //Returning List into array.
+        myArr = groceryList.getGroceryList().toArray(myArr);
     }
 
     private static void printInstructions() {

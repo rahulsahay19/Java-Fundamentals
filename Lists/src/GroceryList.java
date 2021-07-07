@@ -10,22 +10,38 @@ public class GroceryList {
             System.out.println((i+1) + ". " +groceryList.get(i));
         }
     }
-    public void modifyItem(int pos, String newItem){
+    public void modifyItem(String currentItem, String newItem){
+        int pos = findItem(currentItem);
+        if(pos>=0){
+            modifyItem(pos, newItem);
+        }
+    }
+    private void modifyItem(int pos, String newItem){
         groceryList.set(pos, newItem);
         System.out.println("Grocery item " + (pos+1) + " modified");
     }
-    public void removeItem(int pos){
-        String item = groceryList.get(pos);
+    public void removeItem(String item){
+        int pos = findItem(item);
+        if(pos>=0){
+            removeItem(pos);
+        }
+    }
+    private void removeItem(int pos){
         groceryList.remove(pos);
-        System.out.println(item + " is removed");
     }
 
-    public String findItem(String searchItem){
-       // boolean exists = groceryList.contains(searchItem);
-        int position = groceryList.indexOf(searchItem);
-        if(position >=0){
-            return groceryList.get(position);
+    private int findItem(String searchItem){
+       return groceryList.indexOf(searchItem);
+    }
+
+    public boolean searchItem(String searchItem){
+        int pos = findItem(searchItem);
+        if(pos>=0){
+            return true;
         }
-        return null;
+        return false;
+    }
+    public ArrayList<String> getGroceryList(){
+        return groceryList;
     }
 }
