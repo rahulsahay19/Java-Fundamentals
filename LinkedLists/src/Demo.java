@@ -112,7 +112,15 @@ public class Demo {
                         goingFwd = true;
                     }
                     break;
-                case 3: printMenu();
+                case 3:
+                    if(goingFwd){
+                        if(listIterator.hasPrevious()){
+                            System.out.println("Now again visiting current city - " + listIterator.previous());
+                        }else {
+                            System.out.println("We are at the start of the list");
+                        }
+                    }
+                case 4: printMenu();
                 break;
 
             }
@@ -125,6 +133,7 @@ public class Demo {
         System.out.println("0 - to quit\n");
         System.out.println("1 - to next city\n");
         System.out.println("2 - to previous city\n");
-        System.out.println("3 - to print menu\n");
+        System.out.println("3 - to print current city\n");
+        System.out.println("4 - to print menu\n");
     }
 }
