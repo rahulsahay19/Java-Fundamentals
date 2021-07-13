@@ -12,6 +12,7 @@
       <module fileurl="file://$PROJECT_DIR$/LinkedLists/LinkedLists.iml" filepath="$PROJECT_DIR$/LinkedLists/LinkedLists.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lists/Lists.iml" filepath="$PROJECT_DIR$/Lists/Lists.iml" />
       <module fileurl="file://$PROJECT_DIR$/Polymorphism/Polymorphism.iml" filepath="$PROJECT_DIR$/Polymorphism/Polymorphism.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Statics/Statics.iml" filepath="$PROJECT_DIR$/Statics/Statics.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/test-branch.iml" filepath="$PROJECT_DIR$/.idea/test-branch.iml" />
     </modules>
   </component>
