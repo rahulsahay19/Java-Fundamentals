@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Theatre {
@@ -20,18 +21,27 @@ public class Theatre {
         return theatreName;
     }
     public boolean reserveSeat(String seatNumber){
-        Seat requestedSeat = null;
-        for(Seat seat : seats){
-            if(seat.getSeatNumber().equals(seatNumber)){
-                requestedSeat = seat;
-                break;
-            }
+        Seat requestedSeat = new Seat(seatNumber);
+        //This will use compareTo operator to check and return number
+        int foundSeat = Collections.binarySearch(seats, requestedSeat, null);
+        if(foundSeat>=0){
+            return seats.get(foundSeat).reserve();
         }
-        if(requestedSeat == null){
+        else{
             System.out.println("There is no seat " + seatNumber);
             return false;
         }
-        return requestedSeat.reserve();
+//        for(Seat seat : seats){
+//            if(seat.getSeatNumber().equals(seatNumber)){
+//                requestedSeat = seat;
+//                break;
+//            }
+//        }
+//        if(requestedSeat == null){
+//            System.out.println("There is no seat " + seatNumber);
+//            return false;
+//        }
+//        return requestedSeat.reserve();
     }
 
     public void getSeats(){
@@ -39,12 +49,18 @@ public class Theatre {
             System.out.println(seat.getSeatNumber());
         }
     }
-    private class Seat{
+    private class Seat implements Comparable<Seat>{
         private final String seatNumber;
         private boolean reserved = false;
 
         public Seat(String seatNumber) {
             this.seatNumber = seatNumber;
+        }
+
+        //This is meant for binary search
+        @Override
+        public int compareTo(Seat seat) {
+            return this.seatNumber.compareToIgnoreCase(seat.getSeatNumber());
         }
 
         public boolean reserve(){
@@ -69,6 +85,8 @@ public class Theatre {
         public String getSeatNumber() {
             return seatNumber;
         }
+
+
     }
 }
 
